@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart for Kubernetes
+name: jenkinsx-on-prem-python-2
+version: v0.1.0
