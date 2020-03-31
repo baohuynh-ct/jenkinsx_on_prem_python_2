@@ -6,22 +6,22 @@ pipelineConfig:
         replace: true
         steps:
         - command: echo "Making image"
-          name: build-container-pull-Request-1
+          name: build-container-pullRequest-1
         - command: /kaniko/executor --cache=true --cache-dir=/workspace --context=/workspace/source
             --dockerfile=/workspace/source/Dockerfile --destination=gcr.io/practice-project-111/jenkinsx-on-prem-python-2:${inputs.params.version}
             --cache-repo=gcr.io/practice-project-111/cache
           dir: /workspace/source
           image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
-          name: build-container-pull-Request-2
+          name: build-container-pullRequest-2
       postBuild:
         replace: true
         steps:
-        - name: postBuild-container
+        - name: postBuild-container-pullRequest
           command: echo "POSBUILD IS HERE"
       preBuild:
         replace: true
         steps:
-        - name: preBuild-container
+        - name: preBuild-container-pullRequest
           command: echo "PREBUILD IS HERE"
       #promote:
       #  replace: true
@@ -34,26 +34,26 @@ pipelineConfig:
         replace: true
         steps:
         - command: echo "Making image"
-          name: build-container-1
+          name: build-container-release-1
         #- command: /kaniko/executor --cache=true --cache-dir=/workspace --context=/workspace/source
         #    --dockerfile=/workspace/source/Dockerfile --destination=gcr.io/practice-project-111/jenkinsx-on-prem-python-2:${inputs.params.version}
         #    --cache-repo=gcr.io/practice-project-111/cache
         - command: echo "BUILD IS HERE"
           dir: /workspace/source
           image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
-          name: build-container-2
+          name: build-container-release-2
       postBuild:
         replace: true
         steps:
-        - name: postBuild-container
+        - name: postBuild-container-release
           command: echo "POSBUILD IS HERE"
       preBuild:
         replace: true
         steps:
-        - name: preBuild-container
+        - name: preBuild-container-release
           command: echo "PREBUILD IS HERE"
       promote:
         replace: true
         steps:
-        - name: promote-container
+        - name: promote-container-release
           command: echo "doing nothing"
