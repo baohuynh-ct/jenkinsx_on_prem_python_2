@@ -1,1 +1,58 @@
 buildPack: python
+pipelineConfig:
+  pipelines:
+    pullRequest:
+      build:
+        replace: true
+        steps:
+        - command: echo "Making image"
+          name: build-container-1
+        - command: /kaniko/executor --cache=true --cache-dir=/workspace --context=/workspace/source
+            --dockerfile=/workspace/source/Dockerfile --destination=gcr.io/practice-project-111/jenkinsx-on-prem-python-2:${inputs.params.version}
+            --cache-repo=gcr.io/practice-project-111/cache
+          dir: /workspace/source
+          image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
+          name: build-container-2
+      postBuild:
+        replace: true
+        steps:
+        - name: postBuild-container
+          command: echo "POSBUILD IS HERE"
+      preBuild:
+        replace: true
+        steps:
+        - name: preBuild-container
+          command: echo "PREBUILD IS HERE"
+      promote:
+        replace: true
+        steps:
+        - name: promote-container
+          command: echo "doing nothing"
+
+    release:
+      build:
+        replace: true
+        steps:
+        - command: echo "Making image"
+          name: build-container-1
+        - command: /kaniko/executor --cache=true --cache-dir=/workspace --context=/workspace/source
+            --dockerfile=/workspace/source/Dockerfile --destination=gcr.io/practice-project-111/jenkinsx-on-prem-python-2:${inputs.params.version}
+            --cache-repo=gcr.io/practice-project-111/cache
+          dir: /workspace/source
+          image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
+          name: build-container-2
+      postBuild:
+        replace: true
+        steps:
+        - name: postBuild-container
+          command: echo "POSBUILD IS HERE"
+      preBuild:
+        replace: true
+        steps:
+        - name: preBuild-container
+          command: echo "PREBUILD IS HERE"
+      promote:
+        replace: true
+        steps:
+        - name: promote-container
+          command: echo "doing nothing"
