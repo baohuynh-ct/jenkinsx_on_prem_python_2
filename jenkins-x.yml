@@ -40,7 +40,7 @@ pipelineConfig:
         #    --cache-repo=gcr.io/practice-project-111/cache
         - command: echo "BUILD IS HERE"
           dir: /workspace/source
-          image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
+          #image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
           name: build-container-release-2
       postBuild:
         replace: true
