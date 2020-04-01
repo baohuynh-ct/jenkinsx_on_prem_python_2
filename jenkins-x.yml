@@ -2,6 +2,27 @@ buildPack: python
 #buildPack: none
 pipelineConfig:
   pipelines:
+    pullRequest:
+      build:
+        replace: true
+        steps:
+        - command: echo "build-container-pullRequest"
+          name: build-container-pullRequest
+      postBuild:
+        replace: true
+        steps:
+        - command: echo "postBuild-container-pullRequest"
+          name: postBuild-container-pullRequest
+      preBuild:
+        replace: true
+        steps:
+        - command: echo "preBuild-container-pullRequest"
+          name: preBuild-container-pullRequest
+      promote:
+        replace: true
+        steps:
+        - command: echo "promote-helm-pullRequest"
+          name: promote-helm-pullRequest
     release:
       build:
         replace: true
