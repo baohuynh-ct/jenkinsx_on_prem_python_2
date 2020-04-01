@@ -31,3 +31,7 @@ pipelineConfig:
           dir: /workspace/source/charts/jenkinsx-on-prem-python-2
           image: python
           name: promote-helm-release
+        - command: jx promote -b --all-auto --timeout 1h --version ${VERSION}
+          dir: /workspace/source/charts/jenkinsx_on_prem_python_2
+          image: python
+          name: promote-jx-promote
