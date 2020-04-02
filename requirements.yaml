@@ -2,3 +2,6 @@ dependencies:
 - name: jenkinsx-on-prem-python-2
   repository: http://jenkins-x-chartmuseum:8080
   version: "0.1"
+- name: python-flask-docker
+  repository: http://jenkins-x-chartmuseum:8080
+  version: 0.0.1
